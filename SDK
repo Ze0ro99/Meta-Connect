@@ -64,7 +64,7 @@ export const initiatePiPayment = async (amount, memo) => {
 
 ############
 // frontend/components/PiPaymentButton.js
-import { initiatePiPayment } from '../hooks/usePi';
+import { initiatePiPayment } from '../hooks/usePi';whsec_iHmhNt3Mx68bV9cAFZPDmz5wguPiSgj9
 
 export default function PiPaymentButton() {
   const handlePayment = () => {
