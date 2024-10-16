@@ -5,7 +5,7 @@
 mkdir -p .github/dependabot
 dependabot.ymltouch .github/dependabot.yml
 # .github/dependabot.yml
-
+Top level entity must be an Object, not a String
 version: 2
 updates:
   # 1. تحديث التبعيات الخاصة بـ npm في الواجهة الأمامية
