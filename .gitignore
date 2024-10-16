@@ -1,6 +1,13 @@
-cd PiHub
-git init
+.gitignore.envgit init
 git add .
 git commit -m "Initial commit"
 git remote add origin https://github.com/YOUR_USERNAME/PiHub.git
 git push -u origin main
+
+---
+
+## **4. ضغط المشروع ورفعه على GitHub**
+
+1. **انتقل إلى مجلد المشروع:**
+   ```bash
+   cd PiHub
