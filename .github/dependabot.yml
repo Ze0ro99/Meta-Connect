@@ -1,22 +1,14 @@
-github/dependabot.yml:(<unknown>): could not find expected ':' while scanning a simple key at line 2 column 1
-Top level entity must be an Object, not a String
-
-Top level entity must be an Object, not a String# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-mkdir -p .github/dependabot
-dependabot.ymltouch .github/dependabot.yml
 # .github/dependabot.yml
-Top level entity must be an Object, not a String
+
 version: 2
+
 updates:
   # 1. تحديث التبعيات الخاصة بـ npm في الواجهة الأمامية
-  - package-ecosystem: "npm"
-    directory: "/frontend"
+  - package-ecosystem: "npm"  # نظام إدارة الحزم
+    directory: "/frontend"  # مسار ملف package.json
     schedule:
-      interval: "weekly" # يتم فحص التحديثات أسبوعيًا
-    open-pull-requests-limit: 5
+      interval: "weekly"  # يتم فحص التحديثات أسبوعيًا
+    open-pull-requests-limit: 5  # حد أقصى لطلبات السحب المفتوحة
 
   # 2. تحديث التبعيات الخاصة بـ npm في الواجهة الخلفية
   - package-ecosystem: "npm"
@@ -27,13 +19,13 @@ updates:
 
   # 3. مراقبة تبعيات GitHub Actions (اختياري)
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directory: "/"  # جذر المستودع
     schedule:
-      interval: "daily"
+      interval: "daily"  # يتم فحص التحديثات يوميًا
+cd your-project/
+mkdir -p .github/dependabot
 
-version: 2
-updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "weekly"
+touch .github/dependabot.yml
+git add .github/dependabot.yml
+git commit -m "Add Dependabot configuration"
+git push origin main
