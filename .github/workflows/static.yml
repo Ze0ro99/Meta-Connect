@@ -27,7 +27,7 @@ jobs:
         enablement: true
 
     - name: Upload artifact to Pages
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v5
       with:
         path: ./build  # المسار إلى الملفات التي سيتم نشرها
 
