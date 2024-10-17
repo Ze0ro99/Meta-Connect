@@ -1,4 +1,4 @@
-github/dependabot.yml:
+github/dependabot.yml:(<unknown>): could not find expected ':' while scanning a simple key at line 2 column 1
 Top level entity must be an Object, not a String
 
 Top level entity must be an Object, not a String# To get started with Dependabot version updates, you'll need to specify which
