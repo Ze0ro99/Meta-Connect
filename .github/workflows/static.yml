@@ -21,10 +21,11 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest  # تحديد بيئة التشغيل
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -42,5 +43,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1  # استخدم الإصدار v1
 git add .github/workflows/pages.yml
-git commit -m "Fix GitHub Pages workflow"
+git commit -m "Fix YAML structure for GitHub Pages workflow"
 git push origin main
