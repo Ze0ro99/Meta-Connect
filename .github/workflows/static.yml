@@ -1,14 +1,10 @@
-# .github/workflows/pages.yml
-
 name: نشر محتوى ثابت على الصفحات
 
 on:
-  # يتم تشغيله عند الدفعات إلى الفرع الرئيسي
   push:
-    branches: [ "main" ]
-
-  # السماح بتشغيل سير العمل يدويًا
-  workflow_dispatch:
+    branches: 
+      - "main"  # يتم تشغيله عند الدفع إلى الفرع الرئيسي
+  workflow_dispatch:  # السماح بتشغيل سير العمل يدويًا
 
 permissions:
   contents: read  # إذن قراءة المحتوى
@@ -41,3 +37,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1  # استخدم الإصدار v1
+
+      - name: Verify Deployment
+        run: |
+          echo "الصفحة تم نشرها بنجاح على: ${{ steps.deployment.outputs.page_url }}"
