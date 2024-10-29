@@ -19,9 +19,4 @@ PiHub is an integrated **Web3** application that allows users to create content,
 
 #### **Backend (API)**
 ```bash
-cd backend
-npm install
-
-User Interface (React.js)
-cd frontend
-npm install
+[![GitHub Pages Workflow Status](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml/badge.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml)
