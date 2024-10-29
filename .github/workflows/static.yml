@@ -38,7 +38,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 # إضافة الملف إلى Git
-git add .github/workflows/static.yaml
+git add .github/workflows/static.yml
 
 # إنشاء commit مع رسالة توضيحية
 git commit -m "إعداد سير عمل GitHub Pages"
