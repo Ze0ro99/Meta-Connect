@@ -1,7 +1,7 @@
 # .github/workflows/pages.yml
 actions/configure-pages@v5
-name: نشر محتوى ثابت على الصفحات
-
+name:
+نشر محتوى ثابت على الصفحات
 on:
   # يتم تشغيله عند الدفعات إلى الفرع الرئيسي
   push:
