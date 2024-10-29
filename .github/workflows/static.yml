@@ -37,3 +37,12 @@ jobs:
       - name: Deploy to GitHub Pages  # نشر الصفحات
         id: deployment
         uses: actions/deploy-pages@v1
+# إضافة الملف إلى Git
+git add .github/workflows/pages.yml
+
+# إنشاء commit مع رسالة توضيحية
+git commit -m "إعداد سير عمل GitHub Pages"
+
+# دفع التعديلات إلى الفرع الرئيسي
+git push origin main
+[![GitHub Pages Workflow Status](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml/badge.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml)
