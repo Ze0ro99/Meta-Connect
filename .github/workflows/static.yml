@@ -1,5 +1,5 @@
 # .github/workflows/pages.yml
-
+actions/configure-pages@v5
 name: نشر محتوى ثابت على الصفحات
 
 on:
@@ -45,3 +45,4 @@ jobs:
 git add .github/workflows/pages.yaml
 git commit -m "Fix YAML structure for GitHub Pages workflow"
 git push origin main
+[![.github/workflows/static.yml](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml/badge.svg?branch=static.ymal&event=check_run)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml)
