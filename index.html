@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنوان مشروعك</title>
+    <link rel="stylesheet" href="styles.css"> <!-- رابط لملف CSS -->
+</head>
+<body>
+    <header>
+        <h1>مرحبا بكم في مشروعي</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>عن المشروع</h2>
+            <p>هذا هو المحتوى الرئيسي لمشروعي.</p>
+        </section>
+
+        <section id="contact">
+            <h2>اتصل بنا</h2>
+            <form>
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">الرسالة:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">إرسال</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024</p>
+    </footer>
+</body>
+</html>
