@@ -1,48 +1,39 @@
-# .github/workflows/pages.yml
-actions/configure-pages@v5
-name:
-نشر محتوى ثابت على الصفحات
-on:
-  # يتم تشغيله عند الدفعات إلى الفرع الرئيسي
-  push:
-    branches: [ "main" ]
+name: نشر محتوى ثابت على الصفحات
 
-  # السماح بتشغيل سير العمل يدويًا
-  workflow_dispatch:
+on:
+  push:
+    branches: [ "main" ]  # تشغيل العمل عند الدفع إلى الفرع الرئيسي
+  workflow_dispatch:  # السماح بتشغيل العمل يدويًا من GitHub
 
 permissions:
-  contents: read  # إذن قراءة المحتوى
-  pages: write     # إذن الكتابة على صفحات GitHub
-  id-token: write  # إذن كتابة رمز المعرف
+  contents: read       # إذن قراءة المحتوى
+  pages: write         # إذن الكتابة على الصفحات
+  id-token: write      # إذن كتابة رمز المعرف
 
 concurrency:
-  group: "pages"  # السماح بنشر واحد فقط في نفس الوقت
-  cancel-in-progress: false  # لا يتم إلغاء عمليات النشر الجارية
+  group: "pages"  # منع تشغيل أكثر من نشر واحد في نفس الوقت
+  cancel-in-progress: false  # عدم إلغاء عمليات النشر الجارية
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # تحديد بيئة التشغيل
+    runs-on: ubuntu-latest  # بيئة التشغيل
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}  # رابط الصفحة بعد النشر
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # جلب الكود من المستودع
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Setup Pages  # إعداد الصفحات
+        uses: actions/configure-pages@v5  # إعداد صفحات GitHub
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1  # استخدم الإصدار v1
+      - name: Upload artifact  # رفع الملفات المطلوبة للنشر
+        uses: actions/upload-pages-artifact@v1
         with:
-          path: '.'  # تحميل كل الملفات في المستودع
+          path: '.'  # تحديد المسار لرفع جميع الملفات
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages  # نشر الصفحات
         id: deployment
-        uses: actions/deploy-pages@v1  # استخدم الإصدار v1
-git add .github/workflows/pages.yaml
-git commit -m "Fix YAML structure for GitHub Pages workflow"
-git push origin main
-[![.github/workflows/static.yml](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml/badge.svg?branch=static.ymal&event=check_run)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml)
+        uses: actions/deploy-pages@v1
