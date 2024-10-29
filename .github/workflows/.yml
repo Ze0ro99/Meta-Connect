@@ -1,0 +1,24 @@
+            - الاسم: CN Terragrunt GitHub Actions
+  # يمكنك التثبيت على الالتزام الدقيق أو الإصدار.
+  # الاستخدامات: CloudNation-nl/cn-terragrunt-github-actions@157d7b2ada26510a0f7ea0180af89bc2cf9305e4
+  الاستخدامات: CloudNation-nl/cn-terragrunt-github-actions@v0.0.16
+  مع:
+    # الأمر الفرعي Terraform أو Terragrunt الذي سيتم تنفيذه.
+    الأمر الفرعي tf_actions:
+    # ثنائي للاستخدام. Terraform أو Terragrunt
+    tf_actions_binary: # اختياري، الافتراضي هو terragrunt
+    # إصدار Terraform للتثبيت.
+    tf_actions_version: # الافتراضي هو الأحدث
+    # إصدار Terragrunt الذي سيتم تثبيته.
+    tg_actions_version: # الافتراضي هو الأحدث
+    # اسم المضيف لملف بيانات اعتماد CLI.
+    tf_actions_cli_credentials_hostname: # اختياري، الافتراضي هو app.terraform.io
+    # رمز لملف بيانات اعتماد CLI.
+    tf_actions_cli_credentials_token: # اختياري
+    # ما إذا كان يجب التعليق على طلبات السحب أم لا.
+    tf_actions_comment: # اختياري، الافتراضي هو true
+    # دليل عمل Terragrunt.
+    tf_actions_working_dir: # اختياري، الافتراضي هو .
+    # اكتب تغييرات Terragrunt fmt على ملفات المصدر.
+    tf_actions_fmt_write: # اختياري
+          
