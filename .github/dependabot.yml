@@ -4,7 +4,8 @@
 
 updates:
   # 1. تحديث التبعيات الخاصة بـ npm في الواجهة الأمامية
-  - package-ecosystem: "npm"  # نظام إدارة الحزم
+  - package-ecosystem: "npm"  # نظام إدارة الحز
+  م
     directory: "/frontend"  # مسار ملف package.json
     schedule:
       interval: "weekly"  # يتم فحص التحديثات أسبوعيًا
@@ -22,10 +23,8 @@ updates:
     directory: "/"  # جذر المستودع
     schedule:
       interval: "daily"  # يتم فحص التحديثات يوميًا
-
-cd your-project/
+cd: your-proj0ect/
 mkdir -p .github/dependabot
-
 touch .github/dependabot.yml
 git add .github/dependabot.yml
 git commit -m "Add Dependabot configuration"
