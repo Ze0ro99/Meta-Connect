@@ -1,6 +1,6 @@
 # دفع التعديلات إلى الفرع الرئيسي
 git push origin main
-[![GitHub Pages Workflow Status](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml/static.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml)
+[![GitHub Pages Workflow Status](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/select.yml/static.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml)
 name: نشر محتوى ثابت على الصفحات
 
 on:
