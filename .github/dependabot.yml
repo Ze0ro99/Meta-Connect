@@ -1,6 +1,5 @@
 # .github/dependabot.yml
-
-(<unknown>): could not find expected ':' while scanning a simple key at line 25 column 1version: 2
+version: 2
 
 updates:
   # 1. تحديث التبعيات الخاصة بـ npm في الواجهة الأمامية
@@ -22,11 +21,3 @@ updates:
     directory: "/"  # جذر المستودع
     schedule:
       interval: "daily"  # يتم فحص التحديثات يوميًا
-
-cd your-project/
-mkdir -p .github/dependabot
-
-touch .github/dependabot.yml
-git add .github/dependabot.yml
-git commit -m "Add Dependabot configuration"
-git push origin main
