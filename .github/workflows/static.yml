@@ -12,15 +12,15 @@ on:
 
 permissions:
 
-  contents: read       # إذن قراءة المحتوى
+  contents: read  # إذن قراءة المحتوى
 
-  pages: write         # إذن الكتابة على الصفحات
+  pages: write  # إذن الكتابة على الصفحات
 
-  id-token: write      # تصريح كتابة رمز المعرف
+  id-token: write  # تصريح كتابة رمز المعرف
 
 concurrency:
 
-  group: "pages"   # منع أكثر من نشر واحد في نفس الوقت
+  group: "pages"  # منع أكثر من نشر واحد في نفس الوقت
 
   cancel-in-progress: false  # عدم إلغاء عمليات النشر الجارية
 
@@ -65,4 +65,6 @@ jobs:
         run: |
 
           echo "الصفحة تم نشرها بنجاح على: ${{ steps.deployment.outputs.page_url }}"
+
+git add .github/workflows/static.yml
 
