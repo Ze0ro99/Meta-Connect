@@ -1,3 +1,6 @@
+# دفع التعديلات إلى الفرع الرئيسي
+git push origin main
+[![GitHub Pages Workflow Status](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml/static.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/static.yml)
 name: نشر محتوى ثابت على الصفحات
 
 on:
@@ -24,15 +27,33 @@ concurrency:
 
   cancel-in-progress: false  # عدم إلغاء عمليات النشر الجارية
 
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+
 jobs:
 
   deploy:
 
+
     runs-on: ubuntu-latest  # بيئة التشغيل
+
+    runs-on: ubuntu-latest
+
 
     environment:
 
       name: github-pages
+
 
       url: ${{ steps.deployment.outputs.page_url }}  # رابط الصفحة بعد النشر
 
@@ -48,14 +69,29 @@ jobs:
 
       - name: Upload artifact  # رفع الملفات المطلوبة للنشر
 
+
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
         with:
+
 
           path: '.'  # تحديد المسار لرفع جميع الملفات
 
       - name: Deploy to GitHub Pages  # نشر الصفحات
 
+          path: '.'
+
+      - name: Deploy to GitHub Pages
         id: deployment
 
         uses: actions/deploy-pages@v1
