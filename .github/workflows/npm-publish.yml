@@ -31,6 +31,6 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-git add .github/workflows/publish.yml
+git add .github/workflows/publish.yaml
 git commit -m "إضافة سير عمل النشر"
 git push origin main
