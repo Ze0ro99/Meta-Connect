@@ -1,16 +1,22 @@
-PiHub/
-├── backend/
-│   ├── index.js              # نقطة تشغيل الخادم
-│   ├── githubAuth.js         # توليد JWT
-│   ├── .env                  # متغيرات البيئة
-│   ├── package.json          # إعدادات المشروع الخلفي
-│   └── private-key.pem       # المفتاح الخاص لتطبيق GitHub
-├── frontend/
-│   ├── src/
-│   │   └── App.js            # الواجهة الأمامية للتطبيق
-│   ├── package.json          # إعدادات المشروع الأمامي
-├── .github/
-│   └── workflows/
-│       └── pages.yml         # نشر على GitHub Pages
-└── README.md                 # دليل المشروع
-
+/MetaConnect
+  ├── /backend
+  │   ├── /models
+  │   │   ├── Transaction.js
+  │   │   └── User.js
+  │   ├── /routes
+  │   │   └── transactions.js
+  │   ├── server.js
+  │   └── .env
+  ├── /frontend
+  │   ├── /src
+  │   │   ├── /components
+  │   │   │   ├── Header.js
+  │   │   │   ├── Footer.js
+  │   │   │   ├── Home.js
+  │   │   │   ├── Profile.js
+  │   │   │   └── VirtualWorld.js
+  │   │   ├── App.js
+  │   │   └── index.js
+  │   ├── package.json
+  │   └── .env
+  └── README.md
