@@ -1,4 +1,3 @@
-# .github/dependabot.yml
 version: 2
 
 updates:
@@ -8,6 +7,10 @@ updates:
     schedule:
       interval: "weekly"  # يتم فحص التحديثات أسبوعيًا
     open-pull-requests-limit: 5  # حد أقصى لطلبات السحب المفتوحة
+    commit-message:
+      prefix: "fix"  # بادئة رسالة الالتزام
+    ignore:
+      - dependency-name: "some-package"  # استبعاد حزمة معينة من التحديثات
 
   # 2. تحديث التبعيات الخاصة بـ npm في الواجهة الخلفية
   - package-ecosystem: "npm"
@@ -15,11 +18,17 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
+    commit-message:
+      prefix: "fix"
+    ignore:
+      - dependency-name: "some-package"  # استبعاد حزمة معينة من التحديثات
 
   # 3. مراقبة تبعيات GitHub Actions
   - package-ecosystem: "github-actions"
-    directory: "/"  # جذر المستودع
+    directory: "/"
     schedule:
       interval: "daily"  # يتم فحص التحديثات يوميًا
-- name: Checkout
-  uses: actions/checkout@4.2.2
+    commit-message:
+      prefix: "chore"  # بادئة رسالة الالتزام
+    ignore:
+      - dependency-name: "actions/setup-node"  # استبعاد حزمة معينة من التحديثات
