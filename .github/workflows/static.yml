@@ -1,70 +1,43 @@
 name: نشر محتوى ثابت على الصفحات
 
 on:
-
   push:
-
     branches:
-
       - "main"  # يتم تشغيله عند الدفع إلى الفرع الرئيسي
-
   workflow_dispatch:  # السماح بتشغيل العمل يدويًا من GitHub
 
 permissions:
-
   contents: read  # إذن قراءة المحتوى
-
-  pages: write  # إذن الكتابة على الصفحات
-
-  id-token: write  # تصريح كتابة رمز المعرف
+  pages: write    # إذن الكتابة على الصفحات
+  id-token: write # تصريح كتابة رمز المعرف
 
 concurrency:
-
   group: "pages"  # منع أكثر من نشر واحد في نفس الوقت
-
   cancel-in-progress: false  # عدم إلغاء عمليات النشر الجارية
 
 jobs:
-
   deploy:
-
     runs-on: ubuntu-latest  # بيئة التشغيل
-
     environment:
-
       name: github-pages
-
       url: ${{ steps.deployment.outputs.page_url }}  # رابط الصفحة بعد النشر
 
     steps:
-
       - name: Checkout repository  # جلب الكود من المستودع
-
         uses: actions/checkout@v4
 
       - name: Setup Pages  # إعداد الصفحات
-
         uses: actions/configure-pages@v5
 
       - name: Upload artifact  # رفع الملفات المطلوبة للنشر
-
         uses: actions/upload-pages-artifact@v1
-
         with:
-
           path: '.'  # تحديد المسار لرفع جميع الملفات
 
       - name: Deploy to GitHub Pages  # نشر الصفحات
-
         id: deployment
-
         uses: actions/deploy-pages@v1
 
       - name: Verify Deployment  # التحقق من نجاح النشر
-
         run: |
-
           echo "الصفحة تم نشرها بنجاح على: ${{ steps.deployment.outputs.page_url }}"
-
-git add .github/workflows/static.yml
-
