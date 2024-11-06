@@ -21,3 +21,5 @@ updates:
     directory: "/"  # جذر المستودع
     schedule:
       interval: "daily"  # يتم فحص التحديثات يوميًا
+- name: Checkout
+  uses: actions/checkout@4.2.2
