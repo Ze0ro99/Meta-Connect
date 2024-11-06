@@ -41,3 +41,6 @@ jobs:
       - name: Verify Deployment  # التحقق من نجاح النشر
         run: |
           echo "الصفحة تم نشرها بنجاح على: ${{ steps.deployment.outputs.page_url }}"
+git add .github/workflows/static.yml
+git commit -m "إضافة سير عمل نشر محتوى ثابت على الصفحات"
+git push origin main
