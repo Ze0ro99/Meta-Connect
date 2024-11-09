@@ -1,3 +1,5 @@
+http://www.privacypolicy.com/
+
 # سياسة الخصوصية لمشروع MetaConnect
 
 **تاريخ السريان**: 9 نوفمبر 2024
