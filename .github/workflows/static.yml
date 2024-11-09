@@ -1,43 +1,34 @@
-name: نشر محتوى ثابت على الصفحات
+name: Static Site CI
 
 on:
   push:
     branches:
-      - "main"  # يتم تشغيله عند الدفع إلى الفرع الرئيسي
-  workflow_dispatch:  # السماح بتشغيل العمل يدويًا من GitHub
-
-permissions:
-  contents: read  # إذن قراءة المحتوى
-  pages: write    # إذن الكتابة على الصفحات
-  id-token: write # تصريح كتابة رمز المعرف
-
-concurrency:
-  group: "pages"  # منع أكثر من نشر واحد في نفس الوقت
-  cancel-in-progress: false  # عدم إلغاء عمليات النشر الجارية
+      - main  # استبدل بـ "main" أو "master" حسب الفرع الذي تستخدمه
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # بيئة التشغيل
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}  # رابط الصفحة بعد النشر
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository  # جلب الكود من المستودع
-        uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v2
 
-      - name: Setup Pages  # إعداد الصفحات
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact  # رفع الملفات المطلوبة للنشر
-        uses: actions/upload-pages-artifact@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          path: '.'  # تحديد المسار لرفع جميع الملفات
+          node-version: '14'  # يمكنك استبدال الإصدار حسب الحاجة
 
-      - name: Deploy to GitHub Pages  # نشر الصفحات
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Install dependencies
+        run: npm install
 
-      - name: Verify Deployment  # التحقق من نجاح النشر
-        run: |
-          echo "الصفحة تم نشرها بنجاح على: ${{ steps.deployment.outputs.page_url }}"
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
