@@ -30,3 +30,4 @@ export default function PiLoginButton() {
 
   return <button onClick={handleLogin}>Login with Pi</button>;
 }
+npm install 
