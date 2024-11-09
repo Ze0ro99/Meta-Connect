@@ -1,6 +1,17 @@
-# PiHub
+# MetaConnect
 
-### Project Idea:
-PiHub is an integrated **Web3** application that allows users to create content, interact with others, and live stream, with support for **Payment using Pi Network**. The project aims to enable digital innovation within the Pi ecosystem.
+MetaConnect is an application that integrates the metaverse and virtual reality, supporting various digital payment methods.
+
+## System Requirements
+- Node.js
+- MongoDB
+
+## Setup Instructions
+
+### Frontend
+1. Navigate to the `frontend` folder.
+2. Install dependencies:
+   ```bash
+   npm install
 
 [![حالة سير عمل صفحات GitHub](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml/badge.svg)](https://github.com/Ze0ro99/Advanced-social-application-/actions/workflows/pages.yml)
