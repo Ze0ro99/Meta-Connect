@@ -1,7 +1,7 @@
 .gitignore.envgit init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/Ze0ro99/PiHub.git
+git remote add origin https://github.com/Ze0ro99/MetaConnect.git
 git push -u origin main
 
 ---
@@ -10,9 +10,9 @@ git push -u origin main
 
 1. **انتقل إلى مجلد المشروع:**
    ```bash
-   cd PiHub
+   cd MetaConnect
 git init
 git add .
 git commit -m "Initial commit with JWT setup"
-git remote add origin https://github.com/Ze0ro99/PiHub.git
+git remote add origin https://github.com/Ze0ro99/MetaConnect.git
 git push -u origin main
