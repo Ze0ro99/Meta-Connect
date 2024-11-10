@@ -1,7 +1,6 @@
-http://www.privacypolicy.com/
-# سياسة الخصوصية لمشروع MetaConnect
+للمزيد من المعلومات حول كيفية جمع واستخدام بياناتك، يرجى الاطلاع على [# سياسة الخصوصية لمشروع MetaConnect
 
-**تاريخ السريان**: 9 نوفمبر 2024
+**تاريخ السريان**: 10 نوفمبر 2024
 
 نحن في MetaConnect نلتزم بحماية خصوصيتك وخصوصية مستخدمي تطبيق Pi Network. توضح هذه السياسة كيفية جمع واستخدام ومشاركة المعلومات الخاصة بك عند استخدام تطبيقنا.
 
@@ -126,3 +125,4 @@ Si vous avez des questions ou des demandes concernant cette politique de confide
 ## 8. Acceptation des conditions
 En utilisant l'application MetaConnect, vous acceptez la collecte et l'utilisation de vos informations comme indiqué dans cette politique de confidentialité.
 
+](http://www.privacypolicy.com/).
