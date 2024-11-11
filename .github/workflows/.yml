@@ -129,4 +129,27 @@
     # running from unless specified. Example URLs are https://github.com or
     # https://my-ghes-server.example.com
     github-server-url: ''
-   
+   jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run some process
+        run: |
+          echo "Creating artifact..."
+          mkdir output
+          echo "Hello, World!" > output/hello.txt
+          # رفع artifact
+          echo "Uploading artifact..."
+          - name: Upload artifact
+            uses: actions/upload-artifact@v2
+            with:
+              name: my-artifact
+              path: output/
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: my-artifact
