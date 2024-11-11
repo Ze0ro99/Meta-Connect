@@ -1,8 +1,3 @@
-2024-09-03T22:44:32.5175186Z ##[group]Run cmake -B /home/runner/work/pi-network-cloud-automation/pi-network-cloud-automation/build -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Release -S /home/runner/work/pi-network-cloud-automation/pi-network-cloud-automation
-cmake -B /home/runner/work/pi-network-cloud-automation/pi-network-cloud-automation/build -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Release -S /home/runner/work/pi-network-cloud-automation/pi-network-cloud-automation
-shell: /usr/bin/bash -e {0}
-CMake Error: The source directory "/home/runner/work/pi-network-cloud-automation/pi-network-cloud-automation" does not appear to contain CMakeLists.txt.
-Specify --help for usage, or press the help button on the CMake GUI.
 version: 2
 
 updates:
