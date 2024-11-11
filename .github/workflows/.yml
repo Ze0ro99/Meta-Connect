@@ -130,3 +130,4 @@
     # running from unless specified. Example URLs are https://github.com or
     # https://my-ghes-server.example.com
     github-server-url: ''
+      uses: actions/download-artifact@v4.1.7
