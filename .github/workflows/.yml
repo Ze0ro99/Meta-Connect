@@ -129,7 +129,8 @@
     # running from unless specified. Example URLs are https://github.com or
     # https://my-ghes-server.example.com
     github-server-url: ''
-   jobs:
+   
+jobs:
   example_job:
     runs-on: ubuntu-latest
     steps:
