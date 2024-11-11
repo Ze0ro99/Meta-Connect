@@ -22,8 +22,7 @@
     # اكتب تغييرات Terragrunt fmt على ملفات المصدر.
     tf_actions_fmt_write: # اختياري
           
-- uses: actions/checkout@v4
-  with:
+-       uses: actions/download-artifact@v4.1.7
     # Repository name with owner. For example, actions/checkout
     # Default: ${{ github.repository }}
     repository: ''
@@ -130,4 +129,4 @@
     # running from unless specified. Example URLs are https://github.com or
     # https://my-ghes-server.example.com
     github-server-url: ''
-      uses: actions/download-artifact@v4.1.7
+   
