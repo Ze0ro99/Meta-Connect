@@ -126,3 +126,4 @@ Si vous avez des questions ou des demandes concernant cette politique de confide
 En utilisant l'application MetaConnect, vous acceptez la collecte et l'utilisation de vos informations comme indiqué dans cette politique de confidentialité.
 
 ](http://www.privacypolicy.com/).
+TERMS_OF_SERVICE.md
