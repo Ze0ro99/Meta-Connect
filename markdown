@@ -1,6 +1,6 @@
 https://your-username.github.io/MetaConnect/privacy_policy.htmlللمزيد من المعلومات حول كيفية جمع واستخدام بياناتك، يرجى الاطلاع على [# سياسة الخصوصية لمشروع MetaConnect
 
-**تاريخ السريان**: 10 نوفمبر 2024
+**تاريخ السريان**: 16 نوفمبر 2024
 
 نحن في MetaConnect نلتزم بحماية خصوصيتك وخصوصية مستخدمي تطبيق Pi Network. توضح هذه السياسة كيفية جمع واستخدام ومشاركة المعلومات الخاصة بك عند استخدام تطبيقنا.
 
@@ -43,7 +43,7 @@ https://your-username.github.io/MetaConnect/privacy_policy.htmlللمزيد من
 
 # Privacy Policy for MetaConnect
 
-**Effective Date**: November 9, 2024
+**Effective Date**: November 16, 2024
 
 We at MetaConnect are committed to protecting your privacy and the privacy of users of the Pi Network application. This policy outlines how we collect, use, and share your information when you use our application.
 
@@ -86,7 +86,7 @@ By using the MetaConnect application, you agree to the collection and use of you
 
 # Politique de confidentialité pour MetaConnect
 
-**Date d'entrée en vigueur**: 9 novembre 2024
+**Date d'entrée en vigueur**: 16 novembre 2024
 
 Nous, à MetaConnect, nous engageons à protéger votre vie privée et celle des utilisateurs de l'application Pi Network. Cette politique décrit comment nous collectons, utilisons et partageons vos informations lorsque vous utilisez notre application.
 
