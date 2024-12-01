@@ -14,7 +14,7 @@
     "metaverse",
     "pi network"
   ],
-  "author": "Your Name", //Ze0ro99 استبدل باسمك
+  "author": "Ze0ro99", // استبدل باسمك
   "license": "MIT",
   "dependencies": {
     "react": "^17.0.2",
