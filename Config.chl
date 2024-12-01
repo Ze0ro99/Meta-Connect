@@ -1,0 +1,7 @@
+terraform {
+  source = "git::https://github.com/your-terraform-module-repo.git//path?ref=main"
+}
+
+inputs = {
+  example_input = "value"
+}
