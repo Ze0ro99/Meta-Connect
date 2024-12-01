@@ -1,0 +1,2 @@
+# تثبيت Prettier على مستوى النظام
+npm install -g prettier
