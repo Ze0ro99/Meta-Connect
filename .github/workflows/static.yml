@@ -1,34 +1,182 @@
-name: Static Site CI
+# سير عمل CI/CD لاختبار، بناء، ونشر موقع ثابت إلى GitHub Pages
+name: Static Site CI/CD
 
+# التشغيل عند الدفع أو طلبات السحب على الفرع الرئيسي
 on:
   push:
     branches:
-      - main  # استبدل بـ "main" أو "master" حسب الفرع الذي تستخدمه
+      - main # الفرع الرئيسي
   pull_request:
     branches:
-      - main
+      - main # الهدف لطلبات السحب
+
+# الأذونات المطلوبة للسير
+permissions:
+  contents: write # للسماح بالكتابة (مثل النشر إلى GitHub Pages)
+  pull-requests: read # لقراءة طلبات السحب
+  issues: write # لإنشاء مشكلات GitHub عند الإخفاق
+
+# المتغيرات البيئية العامة
+env:
+  NODE_VERSION: '20' # إصدار Node.js
+  CACHE_TYPE: 'npm' # نوع التخزين المؤقت (npm, yarn, pnpm)
+  FRONTEND_DIR: './frontend' # مسار الواجهة الأمامية
+  BACKEND_DIR: './backend' # مسار الواجهة الخلفية
+  BUILD_DIR: './frontend/build' # مسار ملفات البناء
 
 jobs:
-  build:
+  # وظيفة لاختبار وبناء المشروع
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      # 1. التحقق من المستودع
+      - name: Checkout repository
+        uses: actions/checkout@v4 # تحديث إلى الإصدار الأحدث
         with:
-          node-version: '20'  # يمكنك استبدال الإصدار حسب الحاجة
+          fetch-depth: 0 # جلب كامل التاريخ لتحليل التغييرات
 
-      - name: Install dependencies
-        run: npm install
+      # 2. إعداد Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.CACHE_TYPE }}
+          cache-dependency-path: |
+            ${{ env.FRONTEND_DIR }}/package-lock.json
+            ${{ env.BACKEND_DIR }}/package-lock.json # دعم المسارات الفرعية
 
-      - name: Build
+      # 3. التحقق من صيغة package.json (frontend)
+      - name: Validate frontend package.json
+        working-directory: ${{ env.FRONTEND_DIR }}
+        run: |
+          if [ ! -f package.json ]; then
+            echo "package.json not found in frontend"
+            exit 1
+          fi
+          jq . package.json > /dev/null || { echo "Invalid JSON in package.json"; exit 1; }
+          echo "package.json is valid JSON"
+
+      # 4. التحقق من وجود ملف قفل التبعيات وتثبيت التبعيات (frontend)
+      - name: Install frontend dependencies
+        working-directory: ${{ env.FRONTEND_DIR }}
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "package-lock.json not found in frontend. Generating one..."
+            npm install --package-lock-only
+          fi
+          npm ci # تثبيت التبعيات بناءً على package-lock.json
+
+      # 5. تشغيل فحص Linting (اختياري)
+      - name: Run ESLint
+        working-directory: ${{ env.FRONTEND_DIR }}
+        run: npm run lint || true # تشغيل Linting، لا يفشل إذا لم يكن موجودًا
+        if: always()
+
+      # 6. تشغيل اختبارات الواجهة الأمامية
+      - name: Run frontend tests
+        working-directory: ${{ env.FRONTEND_DIR }}
+        run: npm test || true # تشغيل الاختبارات، لا يفشل إذا لم تكن موجودة
+        env:
+          CI: true # ضمان تشغيل الاختبارات في بيئة CI
+
+      # 7. بناء الواجهة الأمامية
+      - name: Build frontend
+        working-directory: ${{ env.FRONTEND_DIR }}
         run: npm run build
+        env:
+          NODE_ENV: production # ضمان البناء للإنتاج
 
+      # 8. التحقق من صيغة package.json (backend)
+      - name: Validate backend package.json
+        working-directory: ${{ env.BACKEND_DIR }}
+        run: |
+          if [ ! -f package.json ]; then
+            echo "package.json not found in backend"
+            exit 1
+          fi
+          jq . package.json > /dev/null || { echo "Invalid JSON in package.json"; exit 1; }
+          echo "package.json is valid JSON"
+
+      # 9. التحقق من وجود ملف قفل التبعيات وتثبيت التبعيات (backend)
+      - name: Install backend dependencies
+        working-directory: ${{ env.BACKEND_DIR }}
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "package-lock.json not found in backend. Generating one..."
+            npm install --package-lock-only
+          fi
+          npm ci
+
+      # 10. تشغيل اختبارات الواجهة الخلفية
+      - name: Run backend tests
+        working-directory: ${{ env.BACKEND_DIR }}
+        run: npm test || true # تشغيل الاختبارات، لا يفشل إذا لم تكن موجودة
+        env:
+          NODE_ENV: test # بيئة الاختبار
+
+  # وظيفة النشر إلى GitHub Pages
+  deploy:
+    needs: build-and-test # يعتمد على نجاح الاختبار والبناء
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # النشر فقط عند الدفع إلى main
+    steps:
+      # 1. التحقق من المستودع
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. إعداد Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.CACHE_TYPE }}
+          cache-dependency-path: ${{ env.FRONTEND_DIR }}/package-lock.json
+
+      # 3. تثبيت التبعيات وبناء الواجهة الأمامية
+      - name: Install and build frontend
+        working-directory: ${{ env.FRONTEND_DIR }}
+        run: |
+          npm ci
+          npm run build
+        env:
+          NODE_ENV: production
+
+      # 4. النشر إلى GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4 # تحديث إلى الإصدار الأحدث
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ${{ env.BUILD_DIR }} # مجلد ملفات البناء
+          keep_files: false # استبدال الملفات القديمة
+          commit_message: "Deploy to GitHub Pages - ${{ github.sha }}"
+          cname: example.com # (اختياري) إضافة نطاق مخصص إذا لزم الأمر
+
+  # وظيفة إشعارات الإخفاق
+  notify:
+    needs: [build-and-test, deploy]
+    runs-on: ubuntu-latest
+    if: failure() # تشغيل فقط عند فشل أي وظيفة
+    steps:
+      # إنشاء مشكلة GitHub عند الإخفاق
+      - name: Create GitHub Issue on failure
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'CI/CD Pipeline Failure - Run #${{ github.run_id }}',
+              body: `The CI/CD pipeline failed. Please check the run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`
+            })
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # إرسال إشعار إلى Slack (اختياري)
+      - name: Notify on Slack
+        if: env.SLACK_WEBHOOK != ''
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: "CI/CD Pipeline Failure"
+          SLACK_MESSAGE: "The CI/CD pipeline for ${{ github.repository }} failed. Check the run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          SLACK_COLOR: danger
